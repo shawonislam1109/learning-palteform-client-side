@@ -7,9 +7,9 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='grid md:grid-cols-7 md:w-9/12 md:mx-auto '>
+            <div className='grid md:grid-cols-8 md:w-9/12 md:mx-auto '>
                 {/* left side nav section */}
-                <div className='col-span-1'>
+                <div className='col-span-2'>
                     <LeftSidenav />
                 </div>
                 {/* main section */}

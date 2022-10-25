@@ -1,9 +1,15 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import CrouseDetails from '../CrouseDetails/CrouseDetails';
 
 const Home = () => {
+    const categoryData = useLoaderData();
+    // console.log(categoryData)
     return (
         <div>
-            <h1 className='mt-10'> this is the home section </h1>
+            {
+                categoryData.map(categories => <CrouseDetails category={categories} key={categories.id}></CrouseDetails>)
+            }
         </div>
     );
 };

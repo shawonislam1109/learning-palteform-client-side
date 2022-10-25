@@ -12,10 +12,12 @@ export const route = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+
             },
             {
                 path: '/home',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/categoryData')
             },
             {
                 path: '/login',

@@ -8,7 +8,6 @@ import Sidedata from './sideData/Sidedata';
 const LeftSidenav = () => {
 
     const [crouse, setCrouse] = useState([]);
-    console.log(crouse);
 
     useEffect(() => {
         fetch('http://localhost:5000/crouse_Data')
