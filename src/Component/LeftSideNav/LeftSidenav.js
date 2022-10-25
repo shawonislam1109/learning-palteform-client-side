@@ -15,7 +15,7 @@ const LeftSidenav = () => {
             .then(data => setCrouse(data))
     }, [])
     return (
-        <div>
+        <div className='w-2/3 mx-auto'>
             {
                 crouse.map(data => <Sidedata data={data} key={data.id}></Sidedata>)
             }
