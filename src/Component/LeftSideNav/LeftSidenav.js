@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { list } from 'postcss';
 import React, { useContext } from 'react';
 import { useState } from 'react';
@@ -9,9 +9,10 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Sidedata from './sideData/Sidedata';
 
 const LeftSidenav = () => {
-    const { GoogleSignIn } = useContext(AuthContext);
+    const { GoogleSignIn, GithubSignIn } = useContext(AuthContext);
 
     const provider = new GoogleAuthProvider();
+    const gitProvider = new GithubAuthProvider();
 
     const [crouse, setCrouse] = useState([]);
 
@@ -30,6 +31,15 @@ const LeftSidenav = () => {
             .catch(error => console.error(error))
     }
 
+    const githubHandlesubmit = () => {
+        GithubSignIn(gitProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className='lg:w-2/3 mx-auto'>
             {
@@ -42,7 +52,7 @@ const LeftSidenav = () => {
                     </span>
                 </button>
 
-                <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+                <button onClick={githubHandlesubmit} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
                     <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         <FaGithub className='inline w-5 h-5' /> SignIN Github
                     </span>
