@@ -22,6 +22,7 @@ const SingleCategory = () => {
 
                     <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400">{description}</p>
                     <h5 className='text-xl  text-yellow-700 font-semibold'> Price : {Price} tk</h5>
+                    <h5 className='text-xl  text-yellow-700 font-semibold'> Teacher Name : {author} </h5>
                     <div className='flex justify-between items-center my-5'>
                         <div className='flex items-center '>
                             <FaStar className='text-yellow-400 w-5 h-5' />
@@ -29,7 +30,7 @@ const SingleCategory = () => {
                         </div>
                         <div className='flex items-center'>
                             <FaVideo className='text-red-600 w-5 h-5' />
-                            <p className='ml-2 text-xl text-blue-900'>{video}</p>
+                            <p className='ml-2 text-xl text-blue-900'>{video} video</p>
                         </div>
                         <div className='flex items-center'>
                             <FaHourglass className='text-yellow-300 w-5 h-5' />
