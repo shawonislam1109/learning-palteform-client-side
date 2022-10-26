@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Component/Home/Home";
+import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
 import SingleCategory from "../Component/SingleCategory/SingleCategory";
 import Main from "../Layout/Main";
 import Login from "../login-and-logout/login/Login";
@@ -18,6 +19,11 @@ export const route = createBrowserRouter([
             {
                 path: '/home',
                 element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/categoryData')
+            },
+            {
+                path: '/',
+                element: <Sidedata></Sidedata>,
                 loader: () => fetch('http://localhost:5000/categoryData')
             },
             {
