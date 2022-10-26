@@ -1,14 +1,39 @@
 import React from 'react';
 import { FaArrowRight, FaDownload, FaHourglass, FaStar, FaVideo } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 const SingleCategory = () => {
     const singleData = useLoaderData();
-    console.log(singleData);
 
-    const { id, image, description, author, video, rating, Price, header_title, class_duration } = singleData;
+    const { id, image, description, author, video, rating, Price, header_title, class_duration, premium } = singleData;
+
+    // const downlaodPdfFile = (rootElementId, downloadFilename) => {
+    //     const input = document.getElementById(rootElementId)
+    //     html2canvas(input).then((canvas) => {
+    //         const imgData = canvas.toDataURL("image/png")
+    //         const pdf = new jsPDF("p", "pt", "a4")
+    //         pdf.addImage(imgData, "JPEG", 10, 50)
+    //         pdf.save(`${downloadFilename}`)
+    //     })
+    // }
+    const downlaodPDf = () => {
+        // using Java Script method to get PDF file
+        fetch('/public/_Module Summary .pdf').then(response => {
+            response.blob().then(blob => {
+                // Creating new object of PDF file
+                const fileURL = window.URL.createObjectURL(blob);
+                // Setting various property values
+                let alink = document.createElement('a');
+                alink.href = fileURL;
+                alink.download = 'learningPlatformPDF.pdf';
+                alink.click();
+            })
+        })
+    }
     return (
-        <div className='p-5 md:p-2 mb-10'>
+        <div className='p-5 md:p-2 mb-10' id="pagetoDownload">
 
             <div className=" mt-12  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
@@ -46,10 +71,23 @@ const SingleCategory = () => {
                         <Link to='' className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             BUY NOW
                         </Link>
-                        <Link to='' className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Download PDF
-                            <FaDownload />
-                        </Link>
+                        {
+                            premium ? <>
+                                <Link to='/premium' className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <span className='text-xl font-semibold mr-2'>Premium</span>
+                                    <FaStar className='text-yellow-400 w-5 h-5' />
+                                    <FaStar className='text-yellow-400 w-5 h-5' />
+                                    <FaStar className='text-yellow-400 w-5 h-5' />
+                                </Link>
+                            </>
+                                :
+                                <>
+                                    <Link onClick={downlaodPDf} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Download PDF
+                                        <FaDownload />
+                                    </Link>
+                                </>
+                        }
                     </div>
 
                 </div>

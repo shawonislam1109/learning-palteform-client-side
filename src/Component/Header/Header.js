@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setDark, dark } = useContext(AuthContext);
+
+
 
     const Logout = () => {
         logOut()
             .then(() => { })
             .then(error => console.error(error));
     }
-    return (
-        <div>
 
-            <nav className="bg-white  border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    return (
+        <div className={!dark ? "bg-white" : 'bg-slate-900'}>
+            <nav className="px-2 sm:px-4 py-2.5 rounded ">
 
                 <div className=" flex lg:w-9/12  flex-wrap justify-between items-center mx-auto">
                     <Link to='/home' className="flex items-center">
                         <img src="https://i.pinimg.com/736x/d3/e0/b4/d3e0b463223b896f74983d7390c7c253.jpg" className="mr-3 h-6 sm:h-9 rounded-full" alt="Learning tree" />
-                        <span className="self-center  text-xl font-semibold whitespace-nowrap text-blue-800">Learning Tree</span>
+                        <span className={dark ? "self-center  text-xl font-semibold whitespace-nowrap text-white" : "self-center  text-xl font-semibold whitespace-nowrap text-blue-800"}>Learning Tree</span>
+                        {/* <span className="self-center  text-xl font-semibold whitespace-nowrap text-blue-800">Learning Tree</span> */}
                     </Link>
 
                     <div className="flex md:order-2  md:hidden">
@@ -56,6 +59,14 @@ const Header = () => {
                             </li>
                         </ul>
 
+                        <div className='w-20 mx-auto ml-3'>
+                            <label htmFor="default-toggle" className="inline-flex relative items-center cursor-pointer">
+                                <input onChange={() => setDark(!dark)} type="checkbox" value="" id="default-toggle" className="sr-only peer" />
+                                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"></span>
+                            </label>
+                        </div>
+
                         {/* <div className='text-center'>
                             {
                                 user?.uid ? <> </>
@@ -82,16 +93,10 @@ const Header = () => {
 
                                             <button type="button" className="text-white hidden ml-2  md:block bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><Link to='login'>Log In</Link></button>
                                         </>
-
                                 }
                             </div>
                         </div>
-
-
                     </div>
-
-
-
 
                 </div>
 
