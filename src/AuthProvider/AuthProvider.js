@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { app } from '../Firebase/Firebase.config'
 import { useEffect } from 'react';
 
@@ -34,6 +34,9 @@ const AuthProvider = ({ children }) => {
         setLoader(true)
         return signInWithPopup(auth, provider);
     }
+    const ProfileInfo = (profile) => {
+        return updateProfile(auth.currentUser, profile)
+    }
 
     const logOut = () => {
         setLoader(true)
@@ -57,7 +60,9 @@ const AuthProvider = ({ children }) => {
         GithubSignIn,
         createUser,
         SignUser,
-        loader
+        loader,
+        ProfileInfo,
+        setLoader
     }
     return (
         <AuthContext.Provider value={authInfo} >

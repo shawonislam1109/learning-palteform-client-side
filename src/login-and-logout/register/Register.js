@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, createUser } = useContext(AuthContext);
+    const { user, createUser, ProfileInfo } = useContext(AuthContext);
     const [error, SetError] = useState('');
     const navigate = useNavigate();
 
@@ -24,12 +24,25 @@ const Register = () => {
                 SetError('')
                 form.reset();
                 console.log(user)
+                updateProfile(name, photoUrl);
                 navigate('/login')
             })
             .catch(error => {
                 SetError(error.message);
             })
     }
+
+
+    const updateProfile = (name, photoUrl) => {
+        const profile = { displayName: name, photoURL: photoUrl }
+        ProfileInfo(profile)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => SetError(error.message))
+    }
+
     return (
         <div className='mt-5 w-9/12 mb-10 mx-auto' >
 

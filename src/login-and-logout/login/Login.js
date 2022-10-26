@@ -6,7 +6,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { user, SignUser } = useContext(AuthContext);
+    const { user, SignUser, setLoader } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,6 +31,9 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message);
+            })
+            .finally(() => {
+                setLoader(false)
             })
     }
     return (
