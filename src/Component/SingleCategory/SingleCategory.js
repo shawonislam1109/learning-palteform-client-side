@@ -8,9 +8,9 @@ const SingleCategory = () => {
 
     const { id, image, description, author, video, rating, Price, header_title, class_duration } = singleData;
     return (
-        <div>
+        <div className='p-5 md:p-2 mb-10'>
 
-            <div className=" mt-12 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div className=" mt-12  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
                 <div className='flex justify-center align-middle p-2'>
                     <img className="rounded-t-lg" src={image} alt="" />

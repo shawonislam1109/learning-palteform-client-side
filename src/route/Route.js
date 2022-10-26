@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Component/Blog/Blog";
+import ErrorPage from "../Component/ErrorPage/ErrorPage";
 import Home from "../Component/Home/Home";
 import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
 import SingleCategory from "../Component/SingleCategory/SingleCategory";
@@ -17,22 +18,23 @@ export const route = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 loader: () => {
-                    return fetch(`http://localhost:5000/categoryData`)
-                }
+                    return fetch(`http://learning-platform-server-seven.vercel.app/categoryData`)
+                },
+                errorElement: <ErrorPage></ErrorPage>
             },
 
             {
                 path: '/home',
                 element: <Home></Home>,
                 loader: () => {
-                    return fetch(`http://localhost:5000/categoryData`)
+                    return fetch(`http://learning-platform-server-seven.vercel.app/categoryData`)
                 }
             },
 
             {
                 path: '/home/:id',
                 element: <PrivateRoute> <SingleCategory /> </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categoryData/${params.id}`)
+                loader: ({ params }) => fetch(`http://learning-platform-server-seven.vercel.app/categoryData/${params.id}`)
             },
             {
                 path: 'blog',
@@ -46,6 +48,11 @@ export const route = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>,
             },
-        ]
+        ],
+
+    },
+    {
+        path: "*",
+        element: <ErrorPage></ErrorPage>
     }
 ])

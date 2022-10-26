@@ -6,7 +6,7 @@ import { FaHourglass, FaStar, FaTimes, FaViadeo, FaVideo, FaWatchmanMonitoring }
 const CrouseDetails = ({ category }) => {
     const { id, image, description, author, video, rating, price, header_title, class_duration } = category;
     return (
-        <div className=''>
+        <div className='p-5 md:p-0'>
             <Link to={`/home/${id}`} className="flex flex-col p-3 my-10 items-center bg-white rounded-lg border shadow-md lg:flex-row sm:m-12   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <img className="object-cover  rounded-t-lg md:h-auto w-full  lg:w-72" src={image} alt="" />
                 <div className="flex flex-col justify-between p-4 leading-normal">

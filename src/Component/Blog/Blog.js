@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='mb-5'>
+        <div className='mb-5 p-5 md:p-2'>
             <div className=' mt-5 p-5 bg-fuchsia-100 text-blue-900 rounded-lg shadow-xl '>
                 <h1 className='text-2xl font-medium '> 1. what is cors?</h1>
                 <p className='pl-5 text-xl'>Ans : Node.js is an open-source and cross-platform runtime used when executing JavaScript code on the server-side. One of the popular Node.js server frameworks is Express. Implementing CORS in Node.js helps you access numerous functionalities on the browser. In other words, CORS is a browser security feature that restricts cross-origin HTTP requests with other servers and specifies which domains access your resources.The client and server have a different origin from each other, i.e., accessing resources from a different server. In this case, trying to make a request to a resource on the other server will fail.</p>

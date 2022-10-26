@@ -17,7 +17,7 @@ const LeftSidenav = () => {
     const [crouse, setCrouse] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/crouse_Data')
+        fetch('http://learning-platform-server-seven.vercel.app/crouse_Data')
             .then(res => res.json())
             .then(data => setCrouse(data))
     }, []);
