@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../Component/Blog/Blog";
 import Home from "../Component/Home/Home";
 import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
 import SingleCategory from "../Component/SingleCategory/SingleCategory";
@@ -32,6 +33,10 @@ export const route = createBrowserRouter([
                 path: '/home/:id',
                 element: <PrivateRoute> <SingleCategory /> </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/categoryData/${params.id}`)
+            },
+            {
+                path: 'blog',
+                element: <Blog />
             },
             {
                 path: '/login',
