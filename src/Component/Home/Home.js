@@ -3,12 +3,12 @@ import { useLoaderData } from 'react-router-dom';
 import CrouseDetails from '../CrouseDetails/CrouseDetails';
 
 const Home = () => {
-    const categoryData = useLoaderData();
-    // console.log(categoryData)
+    const crouseData = useLoaderData();
+    console.log(crouseData)
     return (
         <div>
             {
-                categoryData.map(categories => <CrouseDetails category={categories} key={categories.id}></CrouseDetails>)
+                crouseData.map(categories => <CrouseDetails category={categories} key={categories.id}></CrouseDetails>)
             }
         </div>
     );

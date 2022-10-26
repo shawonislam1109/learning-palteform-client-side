@@ -1,17 +1,37 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { user } = useContext(AuthContext);
+    const { user, SignUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.form?.pathname || '/'
+
+
     const submitHandle = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(password, email);
+
+
+
+        SignUser(email, password)
+            .then(result => {
+                const user = result.user;
+                form.reset()
+                navigate(from, { replace: true });
+                console.log(user)
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
     return (
         <div className='mt-5 w-9/12  mb-10 mx-auto' >
@@ -31,6 +51,9 @@ const Login = () => {
                     </div>
                     <label htmlFor="remember" className="ml-2 font-medium text-white text-xl  dark:text-gray-300">Remember me</label>
 
+                </div>
+                <div>
+                    <p className='text-xl  text-red-500 font-medium mb-3'>{error}</p>
                 </div>
                 <div>
                     <p className='text-xl text-white font-light mb-3'> Create a  <Link className='underline' to='/register'>new account</Link></p>
