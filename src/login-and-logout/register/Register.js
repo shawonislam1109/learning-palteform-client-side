@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, signInHandle } = useContext(AuthContext);
+    const { user, signInHandle: createUser } = useContext(AuthContext);
     const [error, SetError] = useState('');
     const submitHandle = (event) => {
         event.preventDefault();
@@ -15,7 +15,7 @@ const Register = () => {
         const password = form.password.value;
         console.log(password, email, name, photoUrl);
 
-        signInHandle(email, password)
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 SetError('')
