@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { app } from '../Firebase/Firebase.config'
 import { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 
 const auth = getAuth(app);
@@ -42,10 +43,19 @@ const AuthProvider = ({ children }) => {
         setLoader(true)
         return signOut(auth);
     }
+    const emailVerify = () => {
+        setLoader(true)
+        return sendEmailVerification(auth.currentUser);
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
+            if (currentUser == null || currentUser.emailVerified) {
+                setUser(currentUser);
+            }
+            else {
+                toast.error('your email is not verified')
+            }
             setLoader(false)
         })
         return () => {
@@ -62,7 +72,8 @@ const AuthProvider = ({ children }) => {
         SignUser,
         loader,
         ProfileInfo,
-        setLoader
+        setLoader,
+        emailVerify,
     }
     return (
         <AuthContext.Provider value={authInfo} >

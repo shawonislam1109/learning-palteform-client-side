@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, createUser, ProfileInfo } = useContext(AuthContext);
+    const { user, createUser, ProfileInfo, emailVerify } = useContext(AuthContext);
     const [error, SetError] = useState('');
     const navigate = useNavigate();
 
@@ -26,10 +27,18 @@ const Register = () => {
                 console.log(user)
                 updateProfile(name, photoUrl);
                 navigate('/login')
+                verifyEamil();
+                toast.custom('check you email and confirm verify')
             })
             .catch(error => {
                 SetError(error.message);
             })
+    }
+
+    const verifyEamil = () => {
+        emailVerify()
+            .then(() => { })
+            .catch(error => toast.error('your email is not verified'))
     }
 
 
