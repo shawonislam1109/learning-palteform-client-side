@@ -21,9 +21,16 @@ const Header = () => {
                 <div className=" flex lg:w-9/12  flex-wrap justify-between items-center mx-auto">
                     <Link to='/home' className="flex items-center">
                         <img src="https://i.pinimg.com/736x/d3/e0/b4/d3e0b463223b896f74983d7390c7c253.jpg" className="mr-3 h-6 sm:h-9 rounded-full" alt="Learning tree" />
-                        <span className={dark ? "self-center  text-xl font-semibold whitespace-nowrap text-white" : "self-center  text-xl font-semibold whitespace-nowrap text-blue-800"}>Learning Tree</span>
+                        <span className={!dark ? "self-center  text-xl font-semibold whitespace-nowrap text-slate-900" : "self-center  text-xl font-semibold whitespace-nowrap text-blue-800"}>Learning Tree</span>
                         {/* <span className="self-center  text-xl font-semibold whitespace-nowrap text-blue-800">Learning Tree</span> */}
                     </Link>
+                    <div className='w-20 mx-auto  md:hidden ml-3'>
+                        <label htmFor="default-toggle" className="inline-flex relative items-center cursor-pointer">
+                            <input onChange={() => setDark(!dark)} type="checkbox" value="" id="default-toggle" className="sr-only peer" />
+                            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"></span>
+                        </label>
+                    </div>
 
                     <div className="flex md:order-2  md:hidden">
 
@@ -43,7 +50,7 @@ const Header = () => {
                     </div>
 
                     <div className=" justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-                        <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex flex-col  p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 
                             <li>
                                 <Link to='/home' className="block text-center py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</Link>
@@ -59,7 +66,7 @@ const Header = () => {
                             </li>
                         </ul>
 
-                        <div className='w-20 mx-auto ml-3'>
+                        <div className='w-20 mx-auto hidden md:block ml-3'>
                             <label htmFor="default-toggle" className="inline-flex relative items-center cursor-pointer">
                                 <input onChange={() => setDark(!dark)} type="checkbox" value="" id="default-toggle" className="sr-only peer" />
                                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -79,7 +86,7 @@ const Header = () => {
                             }
                         </div> */}
 
-                        <div className='hidden md:block'>
+                        <div className='hidden  md:block'>
                             <div className=" flex">
 
                                 {

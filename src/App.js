@@ -8,7 +8,7 @@ import { route } from './route/Route';
 function App() {
   const { dark } = useContext(AuthContext);
   return (
-    <div className={dark ? "bg-slate-100" : "bg-slate-900"}>
+    <div className={dark ? "bg-slate-100 pb-64" : "bg-gray-900 pb-64"}>
       <RouterProvider router={route} />
       <Toaster
         position="top-center"
