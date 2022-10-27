@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Component/Blog/Blog";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
 import Home from "../Component/Home/Home";
+import Home2 from "../Component/Home2/Home2";
 import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
 import Premium from "../Component/Premium/Premium";
 import SingleCategory from "../Component/SingleCategory/SingleCategory";
@@ -16,7 +17,7 @@ export const route = createBrowserRouter([
         element: <Main></Main>,
         children: [
             {
-                path: '/',
+                path: '/home',
                 element: <Home></Home>,
                 loader: () => {
                     return fetch(`http://learning-platform-server-seven.vercel.app/categoryData`)
@@ -52,7 +53,15 @@ export const route = createBrowserRouter([
             {
                 path: '/premium',
                 element: <Premium />
-            }
+            },
+            {
+                path: '/home2',
+                element: <Home2 />
+            },
+            {
+                path: '/',
+                element: <Home2 />
+            },
         ]
     },
     {
