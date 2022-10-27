@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Component/Blog/Blog";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
+import FAQ from "../Component/FAQ/FAQ";
 import Home from "../Component/Home/Home";
 import Home2 from "../Component/Home2/Home2";
 import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
@@ -35,7 +36,7 @@ export const route = createBrowserRouter([
 
             {
                 path: '/home/:id',
-                element: <PrivateRoute> <SingleCategory /> </PrivateRoute>,
+                element: <SingleCategory />,
                 loader: ({ params }) => fetch(`http://learning-platform-server-seven.vercel.app/categoryData/${params.id}`)
             },
             {
@@ -52,7 +53,7 @@ export const route = createBrowserRouter([
             },
             {
                 path: '/premium',
-                element: <Premium />
+                element: <PrivateRoute><Premium /></PrivateRoute>
             },
             {
                 path: '/home2',
@@ -62,6 +63,10 @@ export const route = createBrowserRouter([
                 path: '/',
                 element: <Home2 />
             },
+            {
+                path: '/faq',
+                element: <FAQ />
+            }
         ]
     },
     {
