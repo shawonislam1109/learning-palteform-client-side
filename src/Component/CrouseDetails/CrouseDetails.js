@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { } from "@react-icons/all-files/fa/FaBeer";
-import { FaHourglass, FaStar, FaTimes, FaViadeo, FaVideo, FaWatchmanMonitoring } from "react-icons/fa";
+import { FaHourglass, FaStar, FaVideo, } from "react-icons/fa";
 
 const CrouseDetails = ({ category }) => {
-    const { id, image, description, author, video, rating, price, header_title, class_duration } = category;
+    const { id, image, description, video, rating, header_title, class_duration } = category;
     return (
         <div className='p-5 md:p-0'>
             <Link to={`/home/${id}`} className="flex flex-col p-3 my-10 items-center bg-white rounded-lg border shadow-md lg:flex-row sm:m-12   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">

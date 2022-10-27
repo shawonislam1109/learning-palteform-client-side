@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, createUser, ProfileInfo, emailVerify } = useContext(AuthContext);
+    const { createUser, ProfileInfo, emailVerify } = useContext(AuthContext);
     const [error, SetError] = useState('');
     const navigate = useNavigate();
 

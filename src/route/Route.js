@@ -4,7 +4,6 @@ import ErrorPage from "../Component/ErrorPage/ErrorPage";
 import FAQ from "../Component/FAQ/FAQ";
 import Home from "../Component/Home/Home";
 import Home2 from "../Component/Home2/Home2";
-import Sidedata from "../Component/LeftSideNav/sideData/Sidedata";
 import Premium from "../Component/Premium/Premium";
 import SingleCategory from "../Component/SingleCategory/SingleCategory";
 import Main from "../Layout/Main";

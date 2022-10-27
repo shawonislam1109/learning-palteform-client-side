@@ -12,7 +12,7 @@ const Login = () => {
 
     const provider = new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider();
-    const { user, SignUser, setLoader } = useContext(AuthContext);
+    const { SignUser, setLoader } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -46,7 +46,7 @@ const Login = () => {
         GoogleSignIn(provider)
             .then(result => {
                 const user = result.user;
-                // console.log(user)
+                console.log(user)
                 navigate('/home')
             })
             .catch(error => console.error(error))

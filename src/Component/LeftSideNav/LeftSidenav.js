@@ -1,16 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { list } from 'postcss';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Sidedata from './sideData/Sidedata';
 
 const LeftSidenav = () => {
     const { GoogleSignIn, GithubSignIn } = useContext(AuthContext);
-
     const provider = new GoogleAuthProvider();
     const gitProvider = new GithubAuthProvider();
 
@@ -26,7 +23,7 @@ const LeftSidenav = () => {
         GoogleSignIn(provider)
             .then(result => {
                 const user = result.user;
-                // console.log(user)
+                console.log(user)
             })
             .catch(error => console.error(error))
     }

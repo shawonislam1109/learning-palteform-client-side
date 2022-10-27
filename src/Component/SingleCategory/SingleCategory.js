@@ -7,7 +7,7 @@ import { jsPDF } from 'jspdf';
 const SingleCategory = () => {
     const singleData = useLoaderData();
 
-    const { id, image, description, author, video, rating, Price, header_title, class_duration, premium } = singleData;
+    const { image, description, author, video, rating, Price, header_title, class_duration, premium } = singleData;
 
     const inputRef = useRef(null)
     const printDocument = () => {
