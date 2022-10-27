@@ -26,13 +26,13 @@ export const route = createBrowserRouter([
                 errorElement: <ErrorPage></ErrorPage>
             },
 
-            {
-                path: '/home',
-                element: <Home></Home>,
-                loader: () => {
-                    return fetch(`http://learning-platform-server-seven.vercel.app/categoryData`)
-                }
-            },
+            // {
+            //     path: '/home',
+            //     element: <Home></Home>,
+            //     loader: () => {
+            //         return fetch(`http://learning-platform-server-seven.vercel.app/categoryData`)
+            //     }
+            // },
 
             {
                 path: '/home/:id',
