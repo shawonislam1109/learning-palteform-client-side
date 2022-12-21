@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Link, } from 'react-router-dom';
 
 const Sidedata = ({ data }) => {
