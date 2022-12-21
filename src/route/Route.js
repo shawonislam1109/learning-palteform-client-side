@@ -20,7 +20,7 @@ export const route = createBrowserRouter([
                 path: '/home',
                 element: <Home></Home>,
                 loader: () => {
-                    return fetch(`http://localhost:5000/categoryData`)
+                    return fetch(`https://learning-platform-server-seven.vercel.app/categoryData`)
                 },
                 errorElement: <ErrorPage></ErrorPage>
             },
@@ -29,14 +29,14 @@ export const route = createBrowserRouter([
             //     path: '/home',
             //     element: <Home></Home>,
             //     loader: () => {
-            //         return fetch(`http://localhost:5000//categoryData`)
+            //         return fetch(`https://learning-platform-server-seven.vercel.app//categoryData`)
             //     }
             // },
 
             {
                 path: '/home/:id',
                 element: <SingleCategory />,
-                loader: ({ params }) => fetch(`http://localhost:5000/categoryData/${params.id}`)
+                loader: ({ params }) => fetch(`https://learning-platform-server-seven.vercel.app/categoryData/${params.id}`)
             },
             {
                 path: 'blog',
